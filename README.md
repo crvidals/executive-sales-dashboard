@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# Executive Sales Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Dashboard Preview](public/dashboard-preview.png)
 
-Currently, two official plugins are available:
+Executive operational dashboard built for a B2B SaaS sales organization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application helps sales leadership quickly identify performance trends, operational bottlenecks, and areas requiring immediate attention across multiple business scenarios.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Running Locally
 
-## Expanding the ESLint configuration
+### Docker
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker compose up --build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Application available at:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+http://localhost:4173
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+### Local Development
+
+```bash
+npm install
+npm run dev
 ```
+
+Application available at:
+
+http://localhost:5173
+
+---
+
+## Technical Decisions
+
+### React + TypeScript
+Chosen for scalability, strong typing, and maintainability.
+
+### Vite
+Used for fast development experience and lightweight builds.
+
+### TailwindCSS
+Selected for rapid UI iteration and consistent styling.
+
+### Recharts
+Used for lightweight and composable executive-focused visualizations.
+
+### Selector-Based Architecture
+Business logic and operational insights are separated from UI components through selectors, improving maintainability and testability.
+
+### Dockerized Environment
+The entire application runs inside Docker to ensure reproducible environments and simplified setup.
+
+### Scenario-Based Dataset Navigation
+Datasets were presented as business scenarios instead of technical labels to improve executive readability and user experience.
+
+### Executive-Focused UX
+The dashboard prioritizes quick decision-making through concise KPIs, operational insights, funnel visibility, and trend monitoring.
+
+---
+
+## Features
+
+- Multi-dataset navigation
+- Executive KPI summary cards
+- Operational insight engine
+- Funnel conversion analysis
+- Trend visualizations
+- Responsive layout
+- Loading and empty states
+- Dockerized setup
+
+---
+
+## Project Structure
+
+```txt
+src/
+├── components/
+│   ├── charts/
+│   ├── dashboard/
+│   ├── insights/
+│   └── ui/
+├── features/
+│   └── metrics/
+│       ├── constants/
+│       ├── selectors/
+│       ├── services/
+│       ├── types/
+│       └── utils/
+├── pages/
+```
+
+---
+
+## Second Iteration
+
+Given additional time, the next improvements would include:
+
+- API/backend integration
+- Historical period comparison
+- Automated anomaly detection
+- Unit and integration testing
+- Accessibility improvements
+- Advanced filtering capabilities
+- Executive alert prioritization
+- Exportable executive reports
